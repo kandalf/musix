@@ -2,9 +2,6 @@ source 'http://rubygems.org'
 
 gem 'rails', '3.1.1'
 
-# Bundle edge Rails instead:
-# gem 'rails',     :git => 'git://github.com/rails/rails.git'
-
 gem 'sqlite3'
 
 
@@ -16,17 +13,16 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-
-
 # To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
+gem 'bcrypt-ruby', '~> 3.0.0'
 
-# Use unicorn as the web server
-# gem 'unicorn'
+group :development, :test do
+  gem 'rspec-rails'
+  gem 'wirble'
+  gem 'hirb'
+  gem 'interactive_editor'
+end
 
-# Deploy with Capistrano
-# gem 'capistrano'
-
-# To use debugger
-# gem 'ruby-debug19', :require => 'ruby-debug'
-
+group :test do
+  gem 'capybara'
+end
