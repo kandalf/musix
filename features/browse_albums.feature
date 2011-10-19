@@ -61,3 +61,16 @@ I want to be able to list the albums.
       And I click "Update Album"
      Then I should see "The album cannot be updated"
       And I should see "Name can't be blank"
+
+
+  Scenario: User destroys an album from the albums index
+    Given the following albums exist
+      | name     | artist    | year |
+      | Ten      | Pearl Jam | 1990 |
+
+      And I am on the albums page
+     When I click "Destroy"
+     Then I should see "Album was destroyed"
+      And I should not see "Ten"
+      And there should be 0 albums
+      And I should be on the "albums" page

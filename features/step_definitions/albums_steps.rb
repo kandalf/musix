@@ -41,7 +41,7 @@ When /^I fill in "([^"]*)" with "([^"]*)"$/ do |selector, value|
   fill_in(selector, :with => value)
 end
 
-Then /^there should be (\d+) album$/ do |count|
+Then /^there should be (\d+) album(s?)$/ do |count, _|
   Album.count.should == count.to_i
 end
 
