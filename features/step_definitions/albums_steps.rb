@@ -1,5 +1,7 @@
 Given /^the following albums exist$/ do |table|
   table.hashes.each do |attrs|
+    artist_name = attrs.delete("artist")
+    attrs[:artist_id] = Artist.find_or_create_by_name(artist_name).id
     Album.create(attrs)
   end
 end

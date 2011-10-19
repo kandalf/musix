@@ -1,13 +1,15 @@
 class AlbumsController < ApplicationController
   def index
-    @albums = Album.order("artist, year, name")
+    @albums = Album.order("year, name")
   end
 
   def new
+    @artists = Artist.all
     @album = Album.new(params[:album])
   end
 
   def edit
+    @artists = Artist.all
     @album = Album.find(params[:id])
   end
 
@@ -30,6 +32,7 @@ class AlbumsController < ApplicationController
       redirect_to albums_path, :notice => "Album updated successfuly"
     else
       set_flash_error_for @album, "The album cannot be updated"
+      @artists = Artist.all
       render "edit"
     end
   end
