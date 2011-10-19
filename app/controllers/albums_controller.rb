@@ -35,6 +35,14 @@ class AlbumsController < ApplicationController
   end
 
   def destroy
+    @album = Album.find(params[:id])
+
+    if @album.destroy
+      flash[:notice] = "Album was destroyed"
+    else
+      flash[:error] = "Album cannot be deleted"
+    end
+    redirect_to albums_path
   end
 
 end
