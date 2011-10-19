@@ -12,6 +12,10 @@ Then /^I should see "([^"]*)"$/ do |content|
   page.should have_content content
 end
 
+Then /^I should not see "([^"]*)"$/ do |content|
+  page.should_not have_content content
+end
+
 Given /^I am on the albums page$/ do
   When %{I go to the albums path}
 end

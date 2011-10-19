@@ -32,3 +32,32 @@ I want to be able to list the albums.
      When I go to the albums path
      Then I should see "Edit"
       And I should see "Destroy"
+
+
+  Scenario: User edits an album from the albums index
+    Given the following albums exist
+      | name     | artist    | year |
+      | Ten      | Pearl Jam | 1990 |
+
+      And I am on the albums page
+     When I click "Edit"
+      And I fill in "name" with "Riot Act"
+      And I fill in "year" with "2002"
+      And I click "Update Album"
+     Then I should be on the "albums" page
+      And I should see "Album updated successfuly"
+      And I should see "Riot Act"
+      And I should not see "Ten"
+
+  Scenario: User fails to edit an album from the albums index
+    Given the following albums exist
+      | name     | artist    | year |
+      | Ten      | Pearl Jam | 1990 |
+
+      And I am on the albums page
+     When I click "Edit"
+      And I fill in "name" with ""
+      And I fill in "year" with "2002"
+      And I click "Update Album"
+     Then I should see "The album cannot be updated"
+      And I should see "Name can't be blank"
