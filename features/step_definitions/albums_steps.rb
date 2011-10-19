@@ -6,7 +6,7 @@ Given /^the following albums exist$/ do |table|
   end
 end
 
-When /^I go to the albums path$/ do
+When /^I go to the albums page$/ do
   visit albums_path
 end
 

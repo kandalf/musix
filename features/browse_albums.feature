@@ -12,7 +12,7 @@ I want to be able to list the albums.
       | Vitalogy | Pearl Jam | 1994 |
       | No Code  | Pearl Jam | 1996 |
 
-     When I go to the albums path
+     When I go to the albums page
      Then I should see "Ten"
       And I should see "Vs"
       And I should see "Vitalogy"
@@ -29,7 +29,7 @@ I want to be able to list the albums.
       | name     | artist    | year |
       | Ten      | Pearl Jam | 1990 |
     
-     When I go to the albums path
+     When I go to the albums page
      Then I should see "Edit"
       And I should see "Destroy"
 
