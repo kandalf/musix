@@ -1,0 +1,14 @@
+-unless flash.nil? or flash[:error].blank?
+  .error=raw format_messages(flash[:error], flash[:title])
+
+-unless flash.nil? or flash[:warning].blank?
+  .warning=raw format_messages(flash[:warning], flash[:title])
+
+-unless flash.nil? or flash[:success].blank?
+  .success=raw format_messages(flash[:success], flash[:title])
+
+-unless flash.nil? or flash[:notice].blank?
+  .notice=raw format_messages(flash[:notice], flash[:title])
+
+-unless flash.nil? or flash[:info].blank?
+  .info=raw format_messages(flash[:info], flash[:title])
