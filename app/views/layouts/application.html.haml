@@ -1,0 +1,10 @@
+!!!
+%html
+  %head
+    %title Musix
+    = stylesheet_link_tag    "application"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+  %body
+    = render :partial => "shared/flash", :locals => { :flash => flash }
+    = yield
