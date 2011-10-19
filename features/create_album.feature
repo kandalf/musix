@@ -6,8 +6,11 @@ I want to be able create an album.
 
   Scenario: User creates an album by poviding all the required information
     Given there's no albums
+      And the following artist exist
+        |name      |
+        |Pearl Jam |
      When I go to the new "album" page
-      And I fill in "artist" with "Pearl Jam"
+      And I select "Pearl Jam" from "artist"
       And I fill in "name" with "Binaural"
       And I fill in "year" with "2000"
       And I click "Create Album"
