@@ -8,6 +8,7 @@ class AlbumsController < ApplicationController
   end
 
   def edit
+    @album = Album.find(params[:id])
   end
 
   def create
@@ -17,13 +18,20 @@ class AlbumsController < ApplicationController
       puts "Album Save"
       redirect_to albums_path, :notice => "Album created successfuly"
     else
-      flash[:error] = @album.errors.full_messages
-      flash[:title] = "The album cannot be saved"
+      set_flash_error_for @album, "The album cannot be saved"
       render "new"
     end
   end
 
   def update
+    @album = Album.find(params[:id])
+
+    if @album.update_attributes(params[:album])
+      redirect_to albums_path, :notice => "Album updated successfuly"
+    else
+      set_flash_error_for @album, "The album cannot be updated"
+      render "edit"
+    end
   end
 
   def destroy
