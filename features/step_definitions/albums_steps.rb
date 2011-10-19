@@ -19,7 +19,7 @@ Then /^I should not see "([^"]*)"$/ do |content|
 end
 
 Given /^I am on the albums page$/ do
-  When %{I go to the albums path}
+  When %{I go to the albums page}
 end
 
 When /^I click "([^"]*)"$/ do |action|
