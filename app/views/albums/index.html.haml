@@ -13,7 +13,7 @@
     -@albums.each do |album|
       %tr
         %td= album.name
-        %td= album.artist
+        %td= album.artist.name
         %td= album.year
         %td
           =link_to 'Edit', edit_album_path(album)
