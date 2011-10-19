@@ -1,15 +1,30 @@
 =form_for(@album) do |f|
   .field
     =f.label :artist
-    =f.collection_select :artist_id, @artists, :id, :name, :id => :artist
+    %br
+    =f.collection_select :artist_id, @artists, :id, :name, {}, {:id => :artist}
 
   .field
     =f.label :name
+    %br
     =f.text_field :name, :id => :name
 
   .field
     =f.label :year
+    %br
     =f.number_field :year, :id => :year
 
   .actions
     = f.submit
+
+
+%p
+  %h4 Create the artist if it's not in the list above
+  =form_for(@artist) do |f|
+    .field
+      =f.label :name
+      %br
+      =f.text_field :name, :id => :artist_name
+
+    .actions
+      =f.submit

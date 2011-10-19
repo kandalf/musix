@@ -5,11 +5,13 @@ class AlbumsController < ApplicationController
 
   def new
     @artists = Artist.all
+    @artist = Artist.new
     @album = Album.new(params[:album])
   end
 
   def edit
     @artists = Artist.all
+    @artist = Artist.new
     @album = Album.find(params[:id])
   end
 
@@ -21,6 +23,8 @@ class AlbumsController < ApplicationController
       redirect_to albums_path, :notice => "Album created successfuly"
     else
       set_flash_error_for @album, "The album cannot be saved"
+      @artists = Artist.all
+      @artist = Artist.new
       render "new"
     end
   end
@@ -33,6 +37,7 @@ class AlbumsController < ApplicationController
     else
       set_flash_error_for @album, "The album cannot be updated"
       @artists = Artist.all
+      @artist = Artist.new
       render "edit"
     end
   end
