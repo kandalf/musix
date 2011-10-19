@@ -30,9 +30,10 @@ Then /^I should be on the new "([^"]*)" page$/ do |resource_name|
   current_path == "/#{resource_name.to_s}/new"
 end
 
-Given /^there's no albums$/ do
-  Album.destroy_all
-  Album.all.count.should == 0
+Given /^there's no (.+)$/ do |model_name|
+  model = model_name.singularize.capitalize.constantize
+  model.destroy_all
+  model.all.count.should == 0
 end
 
 When /^I go to the new "([^"]*)" page$/ do |resource_name|
@@ -49,4 +50,18 @@ end
 
 Then /^I should be on the "([^"]*)" page$/ do |resource_name|
   current_path.should == "/#{resource_name}"
+end
+
+When /^I select "([^"]*)" from "([^"]*)"$/ do |value, selector|
+  select(value, :from => selector)
+end
+
+Then /^there should be (\d+) artist(s?)$/ do |count, _|
+  Artist.count.should == count.to_i
+end
+
+Given /^the following artist exist$/ do |table|
+  table.hashes.each do |attrs|
+    Artist.create(attrs)
+  end
 end
